@@ -12,9 +12,9 @@ if (!isAdministrator()) {
 include('templates/footer.php');
 exit();
 }
-      $query = 'SELECT id, quote, source, favorite FROM entries ORDER BY date_entered DESC';
 
-      // Get quote from database
+      // Get quote entries from database
+      $query = 'SELECT id, quote, source, favorite FROM quotes ORDER BY date_entered DESC';
       if ($result = mysqli_query($dbc, $query)) {
         // Print quote
         while ($row = mysqli_fetch_array($result)) {
@@ -29,7 +29,7 @@ echo "<p>Quote Admin Menu: <a href=\"edit_quote.php?id={$row['id']}\">Edit</a>
 <a href=\"delete_quote.php?id={$row['id']}\">Delete</a></p></div>";
   }
 } else {
-  echo "<p class='error'>Could not retrieve the data because: " . mysqli_error($dbc) . "</p>";
+  echo "<p class=\"error\">Could not retrieve the data because: " . mysqli_error($dbc) . "</p>";
   echo "<p>The query being run was: " . $query . "</p>";
 }
       mysqli_close($dbc);

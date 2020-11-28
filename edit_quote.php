@@ -61,7 +61,7 @@ echo '<form action="edit_quote.php" method="post">
   }
 
   if (!$problem) {
-  $query = "UPDATE quote SET quote='$quote', source='$source', favorite=$favorite WHERE id={$_POST['id']}";
+  $query = "UPDATE quotes SET quote='$quote', source='$source', favorite=$favorite WHERE id={$_POST['id']}";
 
   if ($result = mysqli_query($dbc,$query)) {
     echo "<p>Successfully updated the quote!</p>";
