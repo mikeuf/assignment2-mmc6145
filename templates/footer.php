@@ -22,17 +22,17 @@
 if ((is_administrator()) || (isset($loggedin) && $loggedin)) {
 
   echo '<li class="nav-item">
-    <a class="nav-link" href="view_quotes.php">View Quotes</a>
+    <a class="nav-link btn" role="button" href="view_quotes.php">View Quotes</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="add_quote.php">Add Quote</a>
+    <a class="nav-link btn" role="button" href="add_quote.php">Add Quote</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="logout.php">Sign Out</a>
+    <a class="nav-link btn" role="button" href="logout.php">Sign Out</a>
   </li>';
 } else {
   echo '<li class="nav-item">
-    <a class="nav-link" href="login.php">Sign In</a>
+    <a class="nav-link btn" role="button" href="login.php">Sign In</a>
   </li>';
 }
 

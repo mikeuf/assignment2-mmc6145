@@ -8,8 +8,14 @@
 // Insert header
  include ('templates/header.php');
 
+ echo '<main>
+<div class="container-fluid">
+    <div class="row">
+    <div class="col-md-3 offset-md-2">
+    <h2>Add a Quote</h2>';
+
 // Deny access if user is not administrator
-if (!isAdministrator()) {
+if (!is_administrator()) {
   echo "<h2>Access Denied.</h2>";
   echo "<p>You do not have permission to access this content.</p>";
   include ('templates/footer.php');
@@ -32,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     
     // Insert user submission into database
-    $query = "INSERT INTO quotes (quote, source, favorite) VALUES ('$quotes', '$source', $favorite)";
+    $query = "INSERT INTO quotes (quote, source, favorite) VALUES ('$quote', '$source', $favorite)";
     mysqli_query($dbc, $query);
 
     // Was a row in the database actually modified?
@@ -49,28 +55,25 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   }
 }
 ?>
-<div class="row">
-    <div class="col-md-4 offset-md-2 form-quotes">
-    <h2>Add a quote</h2>
     <p>Submit a famous quote and include its source. Select <b>Favorite</b> if this is a favorite quote.</p>
 <!-- Quote submission form -->
-    <form>
+    <form action="add_quote.php" method="POST">
   <div class="form-group">
-    <label for="email">Email address</label>
-    <input type="email" class="form-control" id="email">
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="password">
+    <label for="quote">Quote</label>
+    <textarea class="form-control" name="quote"></textarea>
+    <label for="source">Source</label>
+    <input type="text" class="form-control" name="source">
   </div>
   <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="favorite">
     <label class="form-check-label" for="favorite">Favorite</label>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn">Submit</button>
 </form>
-</div> <!-- End row -->
-</div> <!-- End container -->
+</div><!-- End column -->
+</div><!-- End row -->
+</div><!-- End container -->
+</main>
 
 <!-- Insert footer -->
 <?php include ('templates/footer.php'); ?>

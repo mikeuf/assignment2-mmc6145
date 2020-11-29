@@ -9,6 +9,14 @@
 $loggedin = false;
 $error = false;
 
+// Insert header
+include ('templates/header.php');
+
+echo '<main>
+<div class="container-fluid"><div class="row">
+    <div class="col-md-4 offset-md-2 form-quotes">
+    <h2>Sign In</h2>';
+
 // Is the form submitted?
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   //Handle the form
@@ -25,8 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 }
 
-// Insert header
-include ('templates/header.php');
 
 // If an error occurs, display a message to the user
 if ($error) {
@@ -37,11 +43,7 @@ if ($error) {
 if ($loggedin) {
   echo "<p>Login successful.</p>";
 } else {
-echo '<main>
-<div class="container-fluid"><div class="row">
-    <div class="col-md-4 offset-md-2 form-quotes">
-    <h2>Login</h2>
-    <p>Add your email address and password.</p>
+echo '<p>Add your email address and password.</p>
 <!-- Login form -->
     <form action="login.php" method="POST">
   <div class="form-group">
@@ -53,12 +55,13 @@ echo '<main>
     <input type="password" class="form-control" name="password">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-</div> <!-- End column -->
+</form>';
+}
+
+echo '</div> <!-- End column -->
 </div> <!-- End row -->
 </div> <!-- End container -->
 </main>';
-}
 
 // Insert footer
 include ('templates/footer.php');

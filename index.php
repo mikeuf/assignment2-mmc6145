@@ -26,7 +26,7 @@ $query = "SELECT id, quote, source, favorite FROM quotes WHERE favorite=1 ORDER 
   }
   if ($result = mysqli_query($dbc, $query)) { 
     $row = mysqli_fetch_array($result); 
-    echo "<div><blockquote>{$row['quote']}</blockquote>{$row['source']}";
+    echo "<div><blockquote class=\"blockquote\">{$row['quote']}</blockquote><cite>{$row['source']}</cite>";
 
     if($row['favorite'] == 1){ 
       echo "<strong>Favorite!</strong>"; 
@@ -34,7 +34,7 @@ $query = "SELECT id, quote, source, favorite FROM quotes WHERE favorite=1 ORDER 
     echo "</div>"; 
 
     if (is_administrator()) {
-      echo "<p>Quote Admin: <a href=\"edit_quote.php?id={$row['id']}\">Edit</a> | <a href=\"delete_quote.php?id={$row['id']}\">Delete</a>";
+      echo "<p class=\"small text-muted\">Admin Menu: <a href=\"edit_quote.php?id={$row['id']}\">Edit</a> | <a href=\"delete_quote.php?id={$row['id']}\">Delete</a>";
 
   }
 } else {
