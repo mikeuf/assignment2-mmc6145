@@ -3,12 +3,15 @@
 // View quotes in the database
 include('templates/header.php');
 
-echo "<h2>Edit a Quote</h2>";
+echo '<main>
+<div class="container-fluid"><div class="row">
+    <div class="col-md-4 offset-md-2 form-quotes">
+    <h2>Edit a Quote</h2>';
 
 // Deny access if user is not administrator
-if (!isAdministrator()) {
-  echo "<h2>Access Denied.</h2>";
-  echo "<p>You do not have permission to access this content.</p>";
+if (!is_administrator()) {
+  echo "<div class=\"alert alert-primary\" role=\"alert\"><strong>Access Denied: </strong>";
+  echo "You do not have permission to access this content.</div>";
 include('templates/footer.php');
 exit();
 }
@@ -23,9 +26,14 @@ if (isset($_GET['id']) && is_numeric($_GET['id']) && ($_GET['id'] > 0) ){
 
     // Display form
 echo '<form action="edit_quote.php" method="post">
-      <p><label>Quote <textarea name="quote" rows="5" cols="30">' . htmlentities($row['quote']) . '</textarea></label></p>
-      <p><label>Source <input type="text" name="source" value="' . htmlentities($row['source']) . '"></label></p>
-      <p><label>Is this a favorite? <input type="checkbox" name="favorite" value="yes"';
+<div class="form-group">
+    <label for="quote">Quote</label>
+    <textarea class="form-control" name="quote">' . htmlentities($row['quote']) . '</textarea>
+    <label for="source">Source</label>
+    <input type="text" class="form-control" name="source" value="' . htmlentities($row['source']) . '"></input>
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="favorite" value="yes"';
     
     // Is this a favorite?
     if ($row['favorite'] == 1) {
@@ -33,9 +41,10 @@ echo '<form action="edit_quote.php" method="post">
     }
 
     // Close form
-    echo '></label></p>
+    echo '><label class="form-check-label" for="favorite">Favorite</label>
     <input type="hidden" name="id" value="' . $_GET['id'] . '">
-    <p><input type="submit" name="submit" value="Update Quote"></p>
+    </div>
+    <button type="submit" class="btn">Submit</button>
     </form>';
 
   } else {
@@ -61,7 +70,7 @@ echo '<form action="edit_quote.php" method="post">
   }
 
   if (!$problem) {
-  $query = "UPDATE quotes SET quote='$quote', source='$source', favorite=$favorite WHERE id={$_POST['id']}";
+  $query = "UPDATE quotes SET quote='$quote', source='$source', favorite='$favorite' WHERE id={$_POST['id']}";
 
   if ($result = mysqli_query($dbc,$query)) {
     echo "<p>Successfully updated the quote!</p>";
@@ -75,6 +84,11 @@ echo '<form action="edit_quote.php" method="post">
   }
 
       mysqli_close($dbc);
+
+echo '</div><!-- End column -->
+</div><!-- End row -->
+</div><!-- End container -->
+</main>';
 
     include('templates/footer.php'); 
     ?>

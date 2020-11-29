@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     
     // Insert user submission into database
-    $query = "INSERT INTO quotes (quote, source, favorite) VALUES ('$quote', '$source', $favorite)";
+    $query = "INSERT INTO quotes (quote, source, favorite) VALUES ('$quote', '$source', '$favorite')";
     mysqli_query($dbc, $query);
 
     // Was a row in the database actually modified?

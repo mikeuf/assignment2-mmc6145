@@ -4,8 +4,10 @@
  * Displays a menu allowing users to add quotes and log out.
  * Displays the copyright.
  */
+
 ?>
 <footer>
+  
 <div class="container-fluid">
 <div class="row justify-content-center">
   <div class="col-md-8">
@@ -18,7 +20,7 @@
 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
 <?php
-
+// If the user is logged in, show a menu
 if ((is_administrator()) || (isset($loggedin) && $loggedin)) {
 
   echo '<li class="nav-item">
@@ -30,7 +32,8 @@ if ((is_administrator()) || (isset($loggedin) && $loggedin)) {
   <li class="nav-item">
     <a class="nav-link btn" role="button" href="logout.php">Sign Out</a>
   </li>';
-} else {
+  // 
+} elseif ($_SERVER['REQUEST_URI'] != '/login.php') {
   echo '<li class="nav-item">
     <a class="nav-link btn" role="button" href="login.php">Sign In</a>
   </li>';
@@ -43,7 +46,7 @@ if ((is_administrator()) || (isset($loggedin) && $loggedin)) {
 </nav>
 </div><!-- End column -->
 </div><!-- End row -->
-</div><!-- End container -->'
+</div><!-- End container -->
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

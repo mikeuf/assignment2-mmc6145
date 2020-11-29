@@ -41,7 +41,14 @@ if ($error) {
 
 // Display whether user is logged in or display the form
 if ($loggedin) {
-  echo "<p>Login successful.</p>";
+  echo '<p>Login successful.</p>
+  <p>You will automatically be redirected to the QuoteMart home page.</p>
+    <p>Click <a href="index.html">Home</a> to return immediately.</p>
+    <div class="spinner fa-2x">
+    <i class="fad fa-spinner fa-pulse"></i>
+    </div>';
+
+    header("refresh:3; url=index.php");
 } else {
 echo '<p>Add your email address and password.</p>
 <!-- Login form -->
