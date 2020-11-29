@@ -58,6 +58,16 @@ form {
   border-radius: 0.25rem;
 }
 
+
 .spinner {
 color: #333333;
+}
+
+.badge {
+  margin-right: 100%;
+  margin-bottom: 0.25rem;
+}
+
+.copyright {
+  margin-top: 1rem;
 }

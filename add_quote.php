@@ -16,8 +16,7 @@
 
 // Deny access if user is not administrator
 if (!is_administrator()) {
-  echo "<h2>Access Denied.</h2>";
-  echo "<p>You do not have permission to access this content.</p>";
+  display_access_denied();
   include ('templates/footer.php');
   exit();
 }
@@ -43,7 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     // Was a row in the database actually modified?
     if (mysqli_affected_rows($dbc) == 1) {
-      echo "<p>Quote added.</p>";
+      echo "<p>Quote added.</p>
+      <p>You will automatically be redirected.</p>
+      <p>Click <a href=\"view_quotes.html\">View Quotes</a> to go immediately.</p>";
+      header("refresh:1; url=view_quotes.php");
     } else {
       echo "<p class=\"error\">An error occured while adding the quote: " . mysqli_error($dbc) . "</p>";
       echo "<p>Attempted query: " . $query . "</p>";
@@ -65,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <input type="text" class="form-control" name="source">
   </div>
   <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="favorite">
+    <input type="checkbox" class="form-check-input" name="favorite">
     <label class="form-check-label" for="favorite">Favorite</label>
   </div>
   <button type="submit" class="btn">Submit</button>

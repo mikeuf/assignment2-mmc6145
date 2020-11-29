@@ -10,8 +10,7 @@ echo '<main>
 
 // Deny access if user is not administrator
 if (!is_administrator()) {
-  echo "<div class=\"alert alert-primary\" role=\"alert\"><strong>Access Denied: </strong>";
-  echo "You do not have permission to access this content.</div>";
+  display_access_denied();
 include('templates/footer.php');
 exit();
 }
@@ -33,7 +32,7 @@ echo '<form action="edit_quote.php" method="post">
     <input type="text" class="form-control" name="source" value="' . htmlentities($row['source']) . '"></input>
   </div>
   <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="favorite" value="yes"';
+    <input type="checkbox" class="form-check-input" name="favorite" value="yes"';
     
     // Is this a favorite?
     if ($row['favorite'] == 1) {
@@ -41,7 +40,7 @@ echo '<form action="edit_quote.php" method="post">
     }
 
     // Close form
-    echo '><label class="form-check-label" for="favorite">Favorite</label>
+    echo '></input><label class="form-check-label" for="favorite">Favorite</label>
     <input type="hidden" name="id" value="' . $_GET['id'] . '">
     </div>
     <button type="submit" class="btn">Submit</button>
@@ -73,7 +72,10 @@ echo '<form action="edit_quote.php" method="post">
   $query = "UPDATE quotes SET quote='$quote', source='$source', favorite='$favorite' WHERE id={$_POST['id']}";
 
   if ($result = mysqli_query($dbc,$query)) {
-    echo "<p>Successfully updated the quote!</p>";
+    echo "<p>Successfully updated the quote!</p>
+    <p>You will automatically be redirected.</p>
+    <p>Click <a href=\"view_quotes.html\">View Quotes</a> to go immediately.</p>";
+    header("refresh:1; url=view_quotes.php");
   } else {
       echo "<p class='error'>Error occured while adding the quote: " . mysqli_error($dbc) . "</p>";
       echo "<p>Attempted query: " . $query . "</p>";

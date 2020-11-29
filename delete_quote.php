@@ -10,8 +10,7 @@ echo '<main>
 
 // Deny access if user is not administrator
 if (!is_administrator()) {
-  echo "<h2>Access Denied.</h2>";
-  echo "<p>You do not have permission to access this content.</p>";
+  display_access_denied();
 include('templates/footer.php');
 exit();
 }
@@ -26,11 +25,11 @@ if (isset($_GET['id']) && is_numeric($_GET['id']) && ($_GET['id'] > 0)){
 
 echo '<form action="delete_quote.php" method="POST">
 <p>Are you sure that you want to delete this quote?</p>
-<div></blockquote' . $row['quote'] . '</blockquote>- ' . $row['source'];
+<div><blockquote>' . $row['quote'] . '</blockquote><cite>' . $row['source'] . '</cite>';
 
     // Is this a favorite?
     if($row['favorite'] == 1) {
-      echo "<strong>Favorite!</strong>";
+      echo "<div class=\"badge badge-primary\">Favorite</div>";
     }
 
 echo '</div><input type="hidden" name="id" value="' . $_GET['id'] . '">
@@ -46,7 +45,10 @@ echo '</div><input type="hidden" name="id" value="' . $_GET['id'] . '">
 
 $query = "DELETE FROM quotes WHERE id={$_POST['id']} LIMIT 1";
 if ($result = mysqli_query($dbc, $query) && mysqli_affected_rows($dbc) == 1) {
-      echo "<p>Quote deleted.</p>";
+      echo "<p>Quote deleted.</p>
+      <p>You will automatically be redirected.</p>
+      <p>Click <a href=\"view_quotes.html\">View Quotes</a> to go immediately.</p>";
+      header("refresh:1; url=view_quotes.php");
     } else {
       echo "<p class='error'>Error occured while deleting the quote: " . mysqli_error($dbc) . "</p>";
       echo "<p>Attempted query: " . $query . "</p>";

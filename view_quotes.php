@@ -10,9 +10,8 @@ echo '<main>
 
 // Deny access if user is not administrator
 if (!is_administrator()) {
-  echo "<h2>Access Denied.</h2>";
-  echo "<p>You do not have permission to access this content.</p>";
-include('templates/footer.php');
+  display_access_denied();
+  include('templates/footer.php');
 exit();
 }
 
@@ -23,11 +22,11 @@ exit();
         echo "<ul class=\"list-group list-group-flush\">";
         while ($row = mysqli_fetch_array($result)) {
           echo "<li class=\"list-group-item\">
-          <blockquote>{$row['quote']}</blockquote>{$row['source']}";
+          <blockquote>{$row['quote']}</blockquote><cite>{$row['source']}</cite>";
             
     // Is this a favorite?
-    if($row['favorite'] == 1) {
-      echo "<p><strong>You have great taste!</strong></p>";
+    if($row['favorite'] == true) {
+      echo "<div class=\"badge badge-primary\">Favorite</div>";
     }
 
 echo "<p class=\"small text-muted\">Admin Menu: <a href=\"edit_quote.php?id={$row['id']}\">Edit | </a>

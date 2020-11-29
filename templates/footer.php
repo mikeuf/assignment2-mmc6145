@@ -20,8 +20,9 @@
 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
 <?php
-// If the user is logged in, show a menu
-if ((is_administrator()) || (isset($loggedin) && $loggedin)) {
+// If the user is logged in, show a menu -- unless this is the logout page
+  $this_page = $_SERVER['REQUEST_URI'];
+if (((is_administrator()) || (isset($loggedin) && $loggedin)) && ($this_page != '/logout.php')) {
 
   echo '<li class="nav-item">
     <a class="nav-link btn" role="button" href="view_quotes.php">View Quotes</a>
@@ -32,8 +33,9 @@ if ((is_administrator()) || (isset($loggedin) && $loggedin)) {
   <li class="nav-item">
     <a class="nav-link btn" role="button" href="logout.php">Sign Out</a>
   </li>';
-  // 
-} elseif ($_SERVER['REQUEST_URI'] != '/login.php') {
+
+  // Don't show this button for the login/logout pages
+} elseif ($this_page != '/login.php') {
   echo '<li class="nav-item">
     <a class="nav-link btn" role="button" href="login.php">Sign In</a>
   </li>';
@@ -44,6 +46,7 @@ if ((is_administrator()) || (isset($loggedin) && $loggedin)) {
 </ul>
 </div><!-- End navbar-collapse -->
 </nav>
+<p class="copyright text-muted">&copy;2020 QuoteMart Holdings, Inc. All rights reserved.</p>
 </div><!-- End column -->
 </div><!-- End row -->
 </div><!-- End container -->

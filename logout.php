@@ -28,7 +28,7 @@ echo '<main>
 </div> <!-- End container -->
 </main>';
 
-header("refresh:5; url=index.php");
+header("refresh:1; url=index.php");
 
 // Insert footer
 include ('templates/footer.php');

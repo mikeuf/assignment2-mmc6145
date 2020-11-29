@@ -12,7 +12,8 @@ echo '<main>
 <div class="container-fluid">
     <div class="row">
     <div class="col-md-4 offset-md-2 form-quotes">
-    <h2>Welcome to QuoteMart!</h2>';
+    <h2>Welcome to QuoteMart!</h2>
+    <p>Here\'s a sample quote. Feel free to add, edit, or delete as you please.</p>';
 
 // If "random" query parameter is submitted, display random quote.
 // Otherwise, display a one favorite randomly.
@@ -29,7 +30,7 @@ $query = "SELECT id, quote, source, favorite FROM quotes WHERE favorite=1 ORDER 
     echo "<div><blockquote class=\"blockquote\">{$row['quote']}</blockquote><cite>{$row['source']}</cite>";
 
     if($row['favorite'] == 1){ 
-      echo "<strong>Favorite!</strong>"; 
+      echo "<div class=\"badge badge-primary\">Favorite</div>";
     }
     echo "</div>"; 
 
@@ -43,7 +44,7 @@ $query = "SELECT id, quote, source, favorite FROM quotes WHERE favorite=1 ORDER 
 }
   mysqli_close($dbc);
 
-  echo "<p><a href=\"index.php\">Latest</a> | <a href=\"index.php?random=true\">Random</a> | <a href=\"index.php?favorite=\"true\">Favorite</a></p>";
+  echo "<p><a href=\"index.php\">Latest</a> | <a href=\"index.php?random=true\">Random</a> | <a href=\"index.php?favorite=true\">Favorite</a></p>";
 
   echo '</div><!-- End column -->
 </div><!-- End row -->
