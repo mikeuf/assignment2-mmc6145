@@ -1,9 +1,42 @@
-.form-quotes {
-border: 1px #dedede solid;
-border-radius: 0.5rem;
-padding: 2rem;
+
+body {
+  color: #333333;
+}
+
+main {
+  margin-top: 3rem;
+}
+
+header {
+  background-color: #72addd;
+  padding-top: 0.25rem;
+}
+
+header h1 a,
+header h1 a:hover {
+text-decoration: none;
+color: #ffffff;
+}
+
+footer {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #dedede;
+}
+
+footer nav h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.navbar {
+  padding: 0;
 }
 
 form {
   margin-top: 2rem;
+}
+
+.spinner {
+color: #333333;
 }

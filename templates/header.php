@@ -23,7 +23,7 @@ include('includes/functions.php');
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-md-8">
-  <h1><a href="index.php"><i class="far fa-quote-left"></i> QuoteMart</a></h1>
+  <h1><a href="index.php"><i class="fad fa-quote-left"></i> QuoteMart</a></h1>
 </div><!-- End column -->
 </div><!-- End row -->
   </div><!-- End container -->

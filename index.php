@@ -8,6 +8,12 @@
 // Insert header
 include('templates/header.php'); 
 
+echo '<main>
+<div class="container-fluid">
+    <div class="row">
+    <div class="col-md-4 offset-md-2 form-quotes">
+    <h2>Welcome to QuoteMart!</h2>';
+
 // If "random" query parameter is submitted, display random quote.
 // Otherwise, display a one favorite randomly.
 // If no favorites, display all quotes.
@@ -27,7 +33,7 @@ $query = "SELECT id, quote, source, favorite FROM quotes WHERE favorite=1 ORDER 
     }
     echo "</div>"; 
 
-    if (isAdministrator()) {
+    if (is_administrator()) {
       echo "<p>Quote Admin: <a href=\"edit_quote.php?id={$row['id']}\">Edit</a> | <a href=\"delete_quote.php?id={$row['id']}\">Delete</a>";
 
   }
@@ -38,6 +44,11 @@ $query = "SELECT id, quote, source, favorite FROM quotes WHERE favorite=1 ORDER 
   mysqli_close($dbc);
 
   echo "<p><a href=\"index.php\">Latest</a> | <a href=\"index.php?random=true\">Random</a> | <a href=\"index.php?favorite=\"true\">Favorite</a></p>";
+
+  echo '</div><!-- End column -->
+</div><!-- End row -->
+  </div><!-- End container -->
+  </main>';
     
 include ('templates/footer.php'); 
 ?>

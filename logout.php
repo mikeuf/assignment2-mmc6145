@@ -14,7 +14,21 @@ if (isset($_COOKIE['Mike'])) {
 include ('templates/header.php');
 
 // Display message confirming logout is complete
-echo "<p>Logout complete.</p>";
+echo '<main>
+<div class="container-fluid"><div class="row">
+    <div class="col-md-4 offset-md-2 form-quotes">
+    <h2>Signed Out</h2>
+    <p>You will automatically be redirected to the QuoteMart homepage in five seconds.</p>
+    <p>Click <a href="index.html">Home</a> to return immediately.</p>
+    <div class="spinner fa-2x">
+    <i class="fad fa-spinner fa-pulse"></i>
+    </div>
+</div> <!-- End column -->
+</div> <!-- End row -->
+</div> <!-- End container -->
+</main>';
+
+header("refresh:5; url=index.php");
 
 // Insert footer
 include ('templates/footer.php');
