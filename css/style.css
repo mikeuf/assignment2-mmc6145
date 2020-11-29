@@ -1,0 +1,9 @@
+.form-quotes {
+border: 1px #dedede solid;
+border-radius: 0.5rem;
+padding: 2rem;
+}
+
+form {
+  margin-top: 2rem;
+}

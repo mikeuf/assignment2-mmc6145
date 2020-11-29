@@ -8,8 +8,6 @@
 // Insert header
  include ('templates/header.php');
 
-echo "<h2>Add a Quote</h2>";
-
 // Deny access if user is not administrator
 if (!isAdministrator()) {
   echo "<h2>Access Denied.</h2>";
@@ -51,14 +49,28 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   }
 }
 ?>
-
+<div class="row">
+    <div class="col-md-4 offset-md-2 form-quotes">
+    <h2>Add a quote</h2>
+    <p>Submit a famous quote and include its source. Select <b>Favorite</b> if this is a favorite quote.</p>
 <!-- Quote submission form -->
-<form action="add_quote.php" method="post">
-      <p><label>Quote <textarea name="quote" rows="5" cols="30"></textarea></label></p>
-      <p><label>Source <input type="text" name="source"></label></p>
-      <p><label>Is this a favorite? <input type="checkbox" name="favorite" value="yes"></label></p>
-      <input type="submit" name="submit" value="Submit Quote"></p>
-    </form>
+    <form>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password">
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="favorite">
+    <label class="form-check-label" for="favorite">Favorite</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div> <!-- End row -->
+</div> <!-- End container -->
 
 <!-- Insert footer -->
 <?php include ('templates/footer.php'); ?>

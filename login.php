@@ -37,12 +37,24 @@ if ($error) {
 if ($loggedin) {
   echo "<p>Login successful.</p>";
 } else {
-  echo "<h2>Login Form</h2>
-    <form action=\"login.php\" method=\"post\"> 
-<p><label>Email Adresss <input type=\"email\" name=\"email\"></label></p>
-<p><label>Password <input type=\"password\" name=\"password\"></label></p>
-<p><input type=\"submit\" name=\"submit\" value=\"Log In!\"></p> 
-</form>";
+echo '<div class="row">
+    <div class="col-md-4 offset-md-2 form-quotes">
+    <h2>Login</h2>
+    <p>Add your email address and password.</p>
+<!-- Quote submission form -->
+    <form>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div> <!-- End row -->
+</div> <!-- End container -->';
 }
 
 // Insert footer
