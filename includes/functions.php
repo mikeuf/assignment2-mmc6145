@@ -25,5 +25,5 @@ echo '<div class="alert alert-danger" role="alert">
 
 }
 // Connect to database
-$dbc = mysqli_connect('localhost','root','root','assignment2');
+$dbc = mysqli_connect('localhost','mmc6145','kq28ZBeMKH4PdI3L','assignment2');
 ?>

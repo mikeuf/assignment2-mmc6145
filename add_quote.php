@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <label for="quote">Quote</label>
     <textarea class="form-control" name="quote"></textarea>
     <label for="source">Source</label>
-    <input type="text" class="form-control" name="source">
+    <input type="text" class="form-control" name="source" id="id">
   </div>
   <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" name="favorite">

@@ -21,8 +21,8 @@
 
 <?php
 // If the user is logged in, show a menu -- unless this is the logout page
-  $this_page = $_SERVER['REQUEST_URI'];
-if (((is_administrator()) || (isset($loggedin) && $loggedin)) && ($this_page != '/logout.php')) {
+$this_page = basename($_SERVER['REQUEST_URI']);
+if (((is_administrator()) || (isset($loggedin) && $loggedin)) && ($this_page != 'logout.php')) {
 
   echo '<li class="nav-item">
     <a class="nav-link btn" role="button" href="view_quotes.php">View Quotes</a>
@@ -35,7 +35,7 @@ if (((is_administrator()) || (isset($loggedin) && $loggedin)) && ($this_page != 
   </li>';
 
   // Don't show this button for the login/logout pages
-} elseif ($this_page != '/login.php') {
+} elseif ($this_page != 'login.php' && $this_page != 'logout.php') {
   echo '<li class="nav-item">
     <a class="nav-link btn" role="button" href="login.php">Sign In</a>
   </li>';

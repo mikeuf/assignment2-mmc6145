@@ -1,6 +1,6 @@
 <?php
 // Create quotes table to perform CRUD operations
-if ($dbc = mysqli_connect('localhost','root','root','assignment2')) {
+if ($dbc = mysqli_connect('localhost','mmc6145','kq28ZBeMKH4PdI3L','assignment2')) {
   echo "Successfully connected to the database.";
   $query = 'CREATE TABLE quotes (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
